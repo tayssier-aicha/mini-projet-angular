@@ -1,0 +1,25 @@
+<div class="connexion-container">
+  <div class="form-card">
+    <h2>Se connecter</h2>
+    
+    <div *ngIf="erreur" class="error-message">{{erreur}}</div>
+    
+    <form (submit)="seConnecter(); $event.preventDefault()">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input id="email" type="email" [(ngModel)]="email" name="email" required placeholder="exemple@email.com">
+      </div>
+      
+      <div class="form-group">
+        <label for="mdp">Mot de passe:</label>
+        <input id="mdp" type="password" [(ngModel)]="mdp" name="mdp" required placeholder="••••••••">
+      </div>
+      
+      <button type="submit" class="btn-connexion">Se connecter</button>
+    </form>
+    
+    <div class="inscription-link">
+      <p>Pas encore inscrit? <a routerLink="/inscription" class="link">Inscription</a></p>
+    </div>
+  </div>
+</div>

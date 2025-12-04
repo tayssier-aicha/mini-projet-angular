@@ -1,0 +1,83 @@
+<!-- Update the suivi.html template -->
+<div class="suivi-container">
+  <div class="suivi-card">
+    <h2>Suivi des commandes</h2>
+    
+    <div class="suivi-header">
+      <div class="suivi-stats">
+        <div class="stat-item">
+          <span class="stat-number">{{getTotalCommandes()}}</span>
+          <span class="stat-label">Commandes totales</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">{{getCommandesEnCours()}}</span>
+          <span class="stat-label">En cours</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">{{getCommandesLivrees()}}</span>
+          <span class="stat-label">Livrées</span>
+        </div>
+      </div>
+      
+      <div class="refresh-info">
+        <p>Mise à jour automatique toutes les 10 secondes</p>
+        <div class="last-update">
+          Dernière mise à jour: {{lastUpdate | date:'HH:mm:ss'}}
+        </div>
+      </div>
+    </div>
+    
+    <div *ngIf="commandes.length === 0" class="empty-state">
+      <div class="empty-icon">📦</div>
+      <h3>Aucune commande à suivre</h3>
+      <p>Vos commandes apparaîtront ici une fois passées</p>
+    </div>
+    
+    <div *ngIf="commandes.length > 0" class="commandes-grid">
+      <div *ngFor="let c of commandes; let i = index" class="commande-card" [class]="'etat-' + getEtatClass(c.etat)">
+        <div class="commande-header">
+          <div class="produit-info">
+            <span class="commande-icon">📦</span>
+            <span class="produit-nom">{{c.produit}}</span>
+          </div>
+          <span class="commande-prix">{{c.prix}} DT</span>
+        </div>
+        
+        <div class="commande-body">
+          <div class="commande-detail">
+            <span class="detail-label">Adresse:</span>
+            <span class="detail-value">📍 {{c.adresse}}</span>
+          </div>
+          
+          <div class="commande-detail">
+            <span class="detail-label">État:</span>
+            <span class="etat-badge">{{c.etat}}</span>
+          </div>
+          
+          <div class="commande-detail">
+            <span class="detail-label">Référence:</span>
+            <span class="commande-id">CMD-{{i + 1}}</span>
+          </div>
+        </div>
+        
+        <div class="commande-progress">
+          <div class="progress-bar">
+            <div class="progress-fill" [style.width.%]="getProgress(c.etat)"></div>
+          </div>
+          <div class="progress-steps">
+            <span class="step" [class.active]="getProgress(c.etat) >= 25">En attente</span>
+            <span class="step" [class.active]="getProgress(c.etat) >= 50">En préparation</span>
+            <span class="step" [class.active]="getProgress(c.etat) >= 75">En livraison</span>
+            <span class="step" [class.active]="getProgress(c.etat) >= 100">Livrée</span>
+          </div>
+        </div>
+        
+        <div class="commande-footer">
+          <span class="commande-time">
+            ⌛ Dernier suivi: {{lastUpdate | date:'HH:mm'}}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

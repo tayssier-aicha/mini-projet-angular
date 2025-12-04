@@ -1,0 +1,49 @@
+<div class="commandes-container">
+  <div class="commandes-card">
+    <h2>Mes commandes</h2>
+    
+    <div class="commande-form">
+      <h3>Nouvelle commande</h3>
+      <form>
+        <div class="form-group">
+          <label for="produit">Produit:</label>
+          <input id="produit" [(ngModel)]="produit" name="produit" required placeholder="Nom du produit">
+        </div>
+        
+        <div class="form-group">
+          <label for="adresse">Adresse:</label>
+          <input id="adresse" [(ngModel)]="adresse" name="adresse" required placeholder="Adresse de livraison">
+        </div>
+        
+        <div class="form-group">
+          <label for="prix">Prix (DT):</label>
+          <input id="prix" type="number" [(ngModel)]="prix" name="prix" required placeholder="0.00" min="0" step="0.01">
+        </div>
+        
+        <button type="button" class="btn-commander" (click)="commander()">Commander</button>
+      </form>
+    </div>
+    
+    <div class="liste-commandes">
+      <h3>Historique des commandes</h3>
+      <div *ngIf="commandes.length === 0" class="empty-state">
+        <p>Aucune commande pour le moment.</p>
+      </div>
+      
+      <ul class="commandes-list" *ngIf="commandes.length > 0">
+        <li *ngFor="let c of commandes" class="commande-item">
+          <div class="commande-header">
+            <span class="produit">{{c.produit}}</span>
+            <span class="prix">{{c.prix}} DT</span>
+          </div>
+          <div class="commande-details">
+            <span class="adresse">📍 {{c.adresse}}</span>
+            <span class="etat" [class]="'etat-' + c.etat?.toLowerCase()">
+              {{c.etat}}
+            </span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

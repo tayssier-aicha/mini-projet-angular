@@ -1,0 +1,376 @@
+/* Suivi page specific styles */
+.suivi-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 100px);
+  padding: 2rem 2rem 7rem;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+}
+
+.suivi-card {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 1200px;
+  transition: transform 0.3s ease;
+}
+
+.suivi-card:hover {
+  transform: translateY(-5px);
+}
+
+h2 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(to right, #6c5ce7, #a29bfe);
+}
+
+/* Header styling */
+.suivi-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 10px;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.suivi-stats {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  min-width: 120px;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #6c5ce7;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: #6c757d;
+  font-weight: 500;
+}
+
+.refresh-info {
+  text-align: right;
+}
+
+.refresh-info p {
+  color: #495057;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.last-update {
+  color: #6c757d;
+  font-size: 0.9rem;
+  background: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  display: inline-block;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+  background: #f8f9fa;
+  border-radius: 10px;
+  border: 2px dashed #dee2e6;
+}
+
+.empty-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.empty-state h3 {
+  color: #6c757d;
+  margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+  color: #adb5bd;
+}
+
+/* Commandes grid */
+.commandes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.commande-card {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border-top: 4px solid #6c5ce7;
+}
+
+.commande-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.commande-card.etat-en-attente {
+  border-top-color: #fdcb6e;
+}
+
+.commande-card.etat-en-cours {
+  border-top-color: #74b9ff;
+}
+
+.commande-card.etat-livree {
+  border-top-color: #00b894;
+}
+
+.commande-card.etat-annulee {
+  border-top-color: #e17055;
+}
+
+.commande-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.produit-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.commande-icon {
+  font-size: 1.5rem;
+}
+
+.produit-nom {
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 1.1rem;
+}
+
+.commande-prix {
+  font-weight: 700;
+  color: #6c5ce7;
+  font-size: 1.3rem;
+}
+
+.commande-body {
+  margin-bottom: 1.5rem;
+}
+
+.commande-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  padding: 0.5rem;
+  background: #f8f9fa;
+  border-radius: 5px;
+}
+
+.detail-label {
+  font-weight: 500;
+  color: #495057;
+  font-size: 0.9rem;
+}
+
+.detail-value {
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.etat-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.commande-card.etat-en-attente .etat-badge {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.commande-card.etat-en-cours .etat-badge {
+  background-color: #cce5ff;
+  color: #004085;
+}
+
+.commande-card.etat-livree .etat-badge {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.commande-card.etat-annulee .etat-badge {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.commande-id {
+  font-family: 'Courier New', monospace;
+  color: #6c757d;
+  font-size: 0.85rem;
+}
+
+/* Progress bar */
+.commande-progress {
+  margin-bottom: 1.5rem;
+}
+
+.progress-bar {
+  height: 6px;
+  background: #e9ecef;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(to right, #6c5ce7, #a29bfe);
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+.commande-card.etat-en-attente .progress-fill {
+  background: linear-gradient(to right, #fdcb6e, #f9ca24);
+}
+
+.commande-card.etat-en-cours .progress-fill {
+  background: linear-gradient(to right, #74b9ff, #0984e3);
+}
+
+.commande-card.etat-livree .progress-fill {
+  background: linear-gradient(to right, #00b894, #00a085);
+}
+
+.progress-steps {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: #adb5bd;
+  margin-top: 0.5rem;
+}
+
+.progress-steps .step {
+  transition: color 0.3s ease;
+}
+
+.progress-steps .step.active {
+  color: #6c5ce7;
+  font-weight: 600;
+}
+
+.commande-footer {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 0.8rem;
+  color: #adb5bd;
+}
+
+.commande-time {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .commandes-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .suivi-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .suivi-stats {
+    justify-content: center;
+  }
+  
+  .refresh-info {
+    text-align: center;
+  }
+  
+  .suivi-card {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+  
+  .suivi-container {
+    padding: 1rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  .stat-item {
+    min-width: 100px;
+    padding: 0.75rem 1rem;
+  }
+  
+  .stat-number {
+    font-size: 1.5rem;
+  }
+}
+
+/* Animation for new updates */
+@keyframes highlightUpdate {
+  0% { background-color: rgba(108, 92, 231, 0.1); }
+  100% { background-color: transparent; }
+}
+
+.commande-card.highlight {
+  animation: highlightUpdate 2s ease;
+}

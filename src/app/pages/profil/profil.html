@@ -1,0 +1,95 @@
+<!-- profil.html -->
+<div class="profil-container">
+  <div class="profil-card">
+    <h2>Mon Profil</h2>
+    
+    <div *ngIf="user" class="profil-content">
+      <div class="profil-header">
+        <div class="avatar">
+          <span>{{getInitials()}}</span>
+        </div>
+        <div class="profil-info">
+          <h3>{{user.nom}}</h3>
+          <p class="user-email">{{user.email}}</p>
+          <p class="user-role">Membre depuis {{getJoinDate()}}</p>
+        </div>
+      </div>
+      
+      <div class="profil-details">
+        <div class="detail-section">
+          <h4>Informations personnelles</h4>
+          <div class="detail-grid">
+            <div class="detail-item">
+              <span class="detail-label">Nom complet</span>
+              <span class="detail-value">{{user.nom}}</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Adresse email</span>
+              <span class="detail-value">{{user.email}}</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Téléphone</span>
+              <span class="detail-value">{{user.tel || 'Non renseigné'}}</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Identifiant client</span>
+              <span class="detail-value">CLT-{{user.email?.substring(0, 8)?.toUpperCase()}}</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="detail-section">
+          <h4>Statistiques</h4>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon">📦</div>
+              <div class="stat-content">
+                <span class="stat-number">{{getTotalCommandes()}}</span>
+                <span class="stat-label">Commandes totales</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">🚚</div>
+              <div class="stat-content">
+                <span class="stat-number">{{getCommandesEnCours()}}</span>
+                <span class="stat-label">En cours</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">✅</div>
+              <div class="stat-content">
+                <span class="stat-number">{{getCommandesLivrees()}}</span>
+                <span class="stat-label">Livrées</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="detail-section">
+          <h4>Actions du compte</h4>
+          <div class="actions-grid">
+            <button class="action-btn" (click)="modifierProfil()">
+              <span class="action-icon">✏️</span>
+              <span class="action-text">Modifier le profil</span>
+            </button>
+            <button class="action-btn" (click)="changerMotDePasse()">
+              <span class="action-icon">🔒</span>
+              <span class="action-text">Changer le mot de passe</span>
+            </button>
+            <button class="action-btn danger" (click)="deconnecter()">
+              <span class="action-icon">🚪</span>
+              <span class="action-text">Déconnexion</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div *ngIf="!user" class="no-user">
+      <div class="no-user-icon">👤</div>
+      <h3>Aucun profil trouvé</h3>
+      <p>Veuillez vous connecter pour voir votre profil</p>
+      <a routerLink="/connexion" class="login-link">Se connecter</a>
+    </div>
+  </div>
+</div>
